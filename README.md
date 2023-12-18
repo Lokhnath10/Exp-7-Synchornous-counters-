@@ -1,4 +1,6 @@
-# Exp-6-Synchornous-counters - up counter and down counter 
+# Name: Lokhnath.J
+# Register number:23004865
+# Exp:6 Synchornous counters  up counter and down counter 
 ### AIM: To implement 4 bit up and down counters and validate  functionality.
 ### HARDWARE REQUIRED:  – PC, Cyclone II , USB flasher
 ### SOFTWARE REQUIRED:   Quartus prime
@@ -46,39 +48,87 @@ This type of counter is normally referred to as a Down Counter, (CTD). In a bina
 
 4-bit Count Down Counter
 ### Procedure
-/* write all the steps invloved */
+1.Create a new project in Quartus2 software .
 
+2.Name the project as uc for upcounter and dc for down counter.
 
+3.Create a new verilog hdl file in the project file.
+
+4.Name the module declare as dc and uc for down counter and upcounter.
+
+5.Within the module declare input and output variables.
+
+6.Create a loop using if-else with condition parameter as reset.
+
+7.End the loop.
+
+8.End the module
 
 ### PROGRAM 
 /*
 Program for flipflops  and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
+
+Developed by: Lokhnath.J
+
+RegisterNumber:  23004865
 */
 
+ 
 
+# UPCOUNTER
+```
 
+module upc(clk,A);
+input clk;
+output reg[0:3]A;
+always@(posedge clk)
+begin 
+A[0]=((((A[1])&(A[2]))&A[3])^A[0]);
+A[1]=(((A[2])&(A[3]))^A[1]);
+A[2]=((A[3])^A[2]);
+A[3]=1^A[3];
+end 
+endmodule
+```
+# DOWN COUNTER
+```
+module downc(clk , A);
+input clk;
+output reg [0:3]A;
+always@(posedge clk)
+begin 
+A[0] = ((~A[1])&(~A[2])&(~A[3]))^A[0];
+A[1] = ((~A[2])&(~A[3]))^A[1];
+A[2] = ((~A[3]))^A[2];
+A[3] =1^A[3];
+end 
+endmodule 
 
-
-
-### RTL LOGIC UP COUNTER AND DOWN COUNTER  
-
-
-
-
-
+```
+### RTL LOGIC UP COUNTER AND DOWN COUNTER 
+# UP COUNTER
+![image](https://github.com/Lokhnath10/Exp-7-Synchornous-counters-/assets/138969918/7fa8d7ac-5ba1-4b46-90be-428e39fa144f)
+# DOWN COUNTER
+![image](https://github.com/Lokhnath10/Exp-7-Synchornous-counters-/assets/138969918/e2cb7944-94c0-414e-a40f-de5db3bb3bae)
 
 
 
 
 ### TIMING DIGRAMS FOR COUNTER  
+# UP COUNTER
+![image](https://github.com/Lokhnath10/Exp-7-Synchornous-counters-/assets/138969918/7f09ad64-4f95-491c-a310-6d96ea090474)
+# DOWN COUNTER
+![image](https://github.com/Lokhnath10/Exp-7-Synchornous-counters-/assets/138969918/b63d9d81-30e3-4446-9e56-d0de595f70ed)
 
 
 
 
 
 ### TRUTH TABLE 
+# UP COUNTER
+![image](https://github.com/Lokhnath10/Exp-7-Synchornous-counters-/assets/138969918/54a8e0a5-dfe9-43c7-a7f4-79a46be4abf6)
+# DOWN COUNTER
+![image](https://github.com/Lokhnath10/Exp-7-Synchornous-counters-/assets/138969918/acf14e1a-3ff5-477f-a573-8c98344e6561)
 
 
 
@@ -86,3 +136,4 @@ RegisterNumber:
 
 
 ### RESULTS 
+Thus , the 4-bit up and down counter is implemented successfully.
