@@ -1,13 +1,13 @@
 # Name: Lokhnath.J
 # Register number:23004865
 # Exp:6 Synchornous counters  up counter and down counter 
-### AIM: To implement 4 bit up and down counters and validate  functionality.
+### AIM: To implement 3 bit up and down counters and validate  functionality.
 ### HARDWARE REQUIRED:  – PC, Cyclone II , USB flasher
 ### SOFTWARE REQUIRED:   Quartus prime
 ### THEORY 
 
 ## UP COUNTER 
-The counter is a digital sequential circuit and here it is a 4 bit counter, which simply means it can count from 0 to 15 and vice versa based upon the direction of counting (up/down). 
+The counter is a digital sequential circuit and here it is a 3 bit counter, which simply means it can count from 0 to 15 and vice versa based upon the direction of counting (up/down). 
 
 The counter (“count“) value will be evaluated at every positive (rising) edge of the clock (“clk“) cycle.
 The Counter will be set to Zero when “reset” input is at logic high.
@@ -28,12 +28,12 @@ Note that each bit in this four-bit sequence toggles when the bit before it (the
 
 Starting with four J-K flip-flops connected in such a way to always be in the “toggle” mode, we need to determine how to connect the clock inputs in such a way so that each succeeding bit toggles when the bit before it transitions from 1 to 0.
 
-The Q outputs of each flip-flop will serve as the respective binary bits of the final, four-bit count:
+The Q outputs of each flip-flop will serve as the respective binary bits of the final, three-bit count:
 
  
  
 
-Four-bit “Up” Counter
+# Three-bit “Up” Counter
 ![image](https://user-images.githubusercontent.com/36288975/169644758-b2f4339d-9532-40c5-af40-8f4f8c942e2c.png)
 
 
@@ -78,47 +78,48 @@ RegisterNumber:  23004865
 # UPCOUNTER
 ```
 
-module upc(clk,A);
+module upCounters(clk, A);
 input clk;
-output reg[0:3]A;
-always@(posedge clk)
-begin 
-A[0]=((((A[1])&(A[2]))&A[3])^A[0]);
-A[1]=(((A[2])&(A[3]))^A[1]);
-A[2]=((A[3])^A[2]);
-A[3]=1^A[3];
-end 
+output reg [2:0]A;
+always @(posedge clk)
+begin
+   A[2]=(((A[0])&(A[1]))^A[2]);
+   A[1]=(A[0])^A[1];
+   A[0]=A[0]^1;
+end
 endmodule
 ```
 # DOWN COUNTER
 ```
-module downc(clk , A);
+module downCounters(clk,A);
 input clk;
-output reg [0:3]A;
-always@(posedge clk)
-begin 
-A[0] = ((~A[1])&(~A[2])&(~A[3]))^A[0];
-A[1] = ((~A[2])&(~A[3]))^A[1];
-A[2] = ((~A[3]))^A[2];
-A[3] =1^A[3];
+output reg [2:0]A;
+always @(posedge clk)
+begin
+   A[2]=(((~A[0])&(~A[1]))^A[2]);
+   A[1]=(~A[0])^A[1];
+   A[0]=1^A[0];
 end 
-endmodule 
+endmodule
 
 ```
 ### RTL LOGIC UP COUNTER AND DOWN COUNTER 
 # UP COUNTER
-![image](https://github.com/Lokhnath10/Exp-7-Synchornous-counters-/assets/138969918/7fa8d7ac-5ba1-4b46-90be-428e39fa144f)
+![image](https://github.com/Lokhnath10/Exp-7-Synchornous-counters-/assets/138969918/e20cb60c-a65e-4006-878f-5afacff538d8)
+
 # DOWN COUNTER
-![image](https://github.com/Lokhnath10/Exp-7-Synchornous-counters-/assets/138969918/e2cb7944-94c0-414e-a40f-de5db3bb3bae)
+![image](https://github.com/Lokhnath10/Exp-7-Synchornous-counters-/assets/138969918/962d59d6-81a4-42ef-ae1c-5aa59e3f75a7)
 
 
 
 
 ### TIMING DIGRAMS FOR COUNTER  
 # UP COUNTER
-![image](https://github.com/Lokhnath10/Exp-7-Synchornous-counters-/assets/138969918/7f09ad64-4f95-491c-a310-6d96ea090474)
+![image](https://github.com/Lokhnath10/Exp-7-Synchornous-counters-/assets/138969918/042c3979-7286-45f0-80c0-caac9885830a)
+
 # DOWN COUNTER
-![image](https://github.com/Lokhnath10/Exp-7-Synchornous-counters-/assets/138969918/b63d9d81-30e3-4446-9e56-d0de595f70ed)
+![image](https://github.com/Lokhnath10/Exp-7-Synchornous-counters-/assets/138969918/89c19227-d549-4c8c-ad8c-6c689e117692)
+
 
 
 
@@ -126,9 +127,11 @@ endmodule
 
 ### TRUTH TABLE 
 # UP COUNTER
-![image](https://github.com/Lokhnath10/Exp-7-Synchornous-counters-/assets/138969918/54a8e0a5-dfe9-43c7-a7f4-79a46be4abf6)
+![image](https://github.com/Lokhnath10/Exp-7-Synchornous-counters-/assets/138969918/19f2f361-bdd6-4927-b41b-4f4c010f29c7)
+
 # DOWN COUNTER
-![image](https://github.com/Lokhnath10/Exp-7-Synchornous-counters-/assets/138969918/acf14e1a-3ff5-477f-a573-8c98344e6561)
+![image](https://github.com/Lokhnath10/Exp-7-Synchornous-counters-/assets/138969918/b3680c0d-3e6a-4678-9a1c-a50553ad6a1e)
+
 
 
 
@@ -136,4 +139,4 @@ endmodule
 
 
 ### RESULTS 
-Thus , the 4-bit up and down counter is implemented successfully.
+Thus , the 3-bit up and down counter is implemented successfully.
