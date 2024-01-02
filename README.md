@@ -7,26 +7,16 @@
 ### THEORY 
 
 ## UP COUNTER 
-The counter is a digital sequential circuit and here it is a 3 bit counter, which simply means it can count from 0 to 15 and vice versa based upon the direction of counting (up/down). 
+The counter is a digital sequential circuit and here it is a 3 bit counter, which simply means it can count from 0 to 7 and vice versa based upon the direction of counting (up/down).
 
-The counter (“count“) value will be evaluated at every positive (rising) edge of the clock (“clk“) cycle.
-The Counter will be set to Zero when “reset” input is at logic high.
-The counter will be loaded with “data” input when the “load” signal is at logic high. Otherwise, it will count up or down.
-The counter will count up when the “up_down” signal is logic high, otherwise count down
+The counter (“count“) value will be evaluated at every positive (rising) edge of the clock (“clk“) cycle. The Counter will be set to Zero when “reset” input is at logic high. The counter will be loaded with “data” input when the “load” signal is at logic high. Otherwise, it will count up or down. The counter will count up when the “up_down” signal is logic high, otherwise count down
 
-Since we know that binary count sequences follow a pattern of octave (factor of 2) frequency division, and that J-K flip-flop multivibrators set up for the “toggle” mode are capable of performing this type of frequency division, we can envision a circuit made up of several J-K flip-flops, cascaded to produce four bits of output.
-The main problem facing us is to determine how to connect these flip-flops together so that they toggle at the right times to produce the proper binary sequence.
-Examine the following binary count sequence, paying attention to patterns preceding the “toggling” of a bit between 0 and 1:
-Binary count sequence, paying attention to patterns preceding the “toggling” of a bit between 0 and 1.
+Since we know that binary count sequences follow a pattern of octave (factor of 2) frequency division, and that J-K flip-flop multivibrators set up for the “toggle” mode are capable of performing this type of frequency division, we can envision a circuit made up of several J-K flip-flops, cascaded to produce four bits of output. The main problem facing us is to determine how to connect these flip-flops together so that they toggle at the right times to produce the proper binary sequence. Examine the following binary count sequence, paying attention to patterns preceding the “toggling” of a bit between 0 and 1: Binary count sequence, paying attention to patterns preceding the “toggling” of a bit between 0 and 1.
 
 Note that each bit in this four-bit sequence toggles when the bit before it (the bit having a lesser significance, or place-weight), toggles in a particular direction: from 1 to 0.
 
-
-
- 
- 
-
 Starting with four J-K flip-flops connected in such a way to always be in the “toggle” mode, we need to determine how to connect the clock inputs in such a way so that each succeeding bit toggles when the bit before it transitions from 1 to 0.
+ 
 
 The Q outputs of each flip-flop will serve as the respective binary bits of the final, three-bit count:
 
@@ -34,7 +24,8 @@ The Q outputs of each flip-flop will serve as the respective binary bits of the 
  
 
 # Three-bit “Up” Counter
-![image](https://user-images.githubusercontent.com/36288975/169644758-b2f4339d-9532-40c5-af40-8f4f8c942e2c.png)
+![image](https://github.com/Lokhnath10/Exp-7-Synchornous-counters-/assets/138969918/de543c01-fb8f-4572-9f59-5d0104c15f8c)
+
 
 
 
@@ -43,10 +34,11 @@ The Q outputs of each flip-flop will serve as the respective binary bits of the 
 As well as counting “up” from zero and increasing or incrementing to some preset value, it is sometimes necessary to count “down” from a predetermined value to zero allowing us to produce an output that activates when the zero count or some other pre-set value is reached.
 
 This type of counter is normally referred to as a Down Counter, (CTD). In a binary or BCD down counter, the count decreases by one for each external clock pulse from some preset value. Special dual purpose IC’s such as the TTL 74LS193 or CMOS CD4510 are 4-bit binary Up or Down counters which have an additional input pin to select either the up or down count mode.
-![image](https://user-images.githubusercontent.com/36288975/169644844-1a14e123-7228-4ed8-81a9-eb937dff4ac8.png)
+![image](https://github.com/Lokhnath10/Exp-7-Synchornous-counters-/assets/138969918/d70c19f1-cdd7-4a8c-9b60-aa973410f184)
 
 
-4-bit Count Down Counter
+
+3-bit Count Down Counter
 ### Procedure
 1.Create a new project in Quartus2 software .
 
@@ -115,10 +107,11 @@ endmodule
 
 ### TIMING DIGRAMS FOR COUNTER  
 # UP COUNTER
-![image](https://github.com/Lokhnath10/Exp-7-Synchornous-counters-/assets/138969918/042c3979-7286-45f0-80c0-caac9885830a)
+![image](https://github.com/Lokhnath10/Exp-7-Synchornous-counters-/assets/138969918/c1304f09-3a77-40c1-9578-78ac45537849)
+
 
 # DOWN COUNTER
-![image](https://github.com/Lokhnath10/Exp-7-Synchornous-counters-/assets/138969918/89c19227-d549-4c8c-ad8c-6c689e117692)
+![image](https://github.com/Lokhnath10/Exp-7-Synchornous-counters-/assets/138969918/1025ab33-a078-47aa-9017-871e652f34e5)
 
 
 
@@ -127,11 +120,15 @@ endmodule
 
 ### TRUTH TABLE 
 # UP COUNTER
-![image](https://github.com/Lokhnath10/Exp-7-Synchornous-counters-/assets/138969918/19f2f361-bdd6-4927-b41b-4f4c010f29c7)
+![image](https://github.com/Lokhnath10/Exp-7-Synchornous-counters-/assets/138969918/55b26df6-10d2-4d79-a82e-b24a6c413e7a)
+
 
 # DOWN COUNTER
-![image](https://github.com/Lokhnath10/Exp-7-Synchornous-counters-/assets/138969918/b3680c0d-3e6a-4678-9a1c-a50553ad6a1e)
+![image](https://github.com/Lokhnath10/Exp-7-Synchornous-counters-/assets/138969918/6bbc95b7-8696-45ac-88d8-830a95f0700c)
 
+
+# RESULTS
+Thus, the flipflops are implemented using verilog.
 
 
 
