@@ -127,8 +127,7 @@ endmodule
 ![image](https://github.com/Lokhnath10/Exp-7-Synchornous-counters-/assets/138969918/6bbc95b7-8696-45ac-88d8-830a95f0700c)
 
 
-# RESULTS
-Thus, the flipflops are implemented using verilog.
+
 
 
 
